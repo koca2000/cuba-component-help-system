@@ -4,13 +4,7 @@ import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.cuba.core.entity.annotation.Lookup;
 import com.haulmont.cuba.core.entity.annotation.LookupType;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Table(name = "DBCHS_HELPTEXT")
 @Entity(name = "dbchs$Helptext")
@@ -25,7 +19,7 @@ public class Helptext extends StandardEntity {
     @JoinColumn(name = "HELP_CONTEXT_ID")
     protected HelpContext helpContext;
 
-    @Lookup(type = LookupType.DROPDOWN)
+    @Lookup(type = LookupType.DROPDOWN, actions = {})
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "CATEGORY_ID")
     protected HelptextCategory category;
